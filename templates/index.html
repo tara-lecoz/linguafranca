@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traduction</title>
+    <link rel='stylesheet' href="../static/css/style.css">
+</head>
+<body>
+    <h1>Traducteur de ZINZIN</h1>
+    <form method="POST" action="/">
+        <label for="texte">Texte :</label>
+        <input type="text" id="texte" name="texte" required>
+        <br>
+        <br>
+        <label for="langue_source">Langue source :</label>
+        <select id="langue_source" name="langue_source">
+            <option value="auto">Auto-détection</option>
+            {% for langue in langues %}
+                <option value="{{ langue }}">{{ langue }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label for="langue_destination">Langue destination :</label>
+        <select id="langue_destination" name="langue_destination">
+            {% for langue in langues %}
+                <option value="{{ langue }}">{{ langue }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button class="button-85" role="button" type="submit" value="Traduire">Traduire</button>
+    </form>
+    
+    {% if resultat %}
+        <h2>Résultat de la traduction :</h2>
+        <p>{{ resultat }}</p>
+    {% endif %}
+</body>
+</html>
